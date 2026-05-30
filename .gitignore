@@ -1,0 +1,22 @@
+.env
+.env.local
+vector_index/
+__pycache__/
+*.pyc
+.pytest_cache/
+nasa_download.log
+*.partial.json
+chunk_statistics*.json
+temp_chunks/
+temp_skipped_chunks/
+
+# NASA 爬取产物体积大，默认不提交（目录结构由 .gitkeep 保留）
+data/nasa/pdfs/
+data/nasa/markdown/
+data/nasa/chunks/*.json
+data/nasa/chunks/per_pdf/
+data/nasa/lessons_learned/*.csv
+data/nasa/parent_summaries_cache.json
+
+# 评估运行产物
+evaluation/results/

@@ -1,0 +1,117 @@
+[
+  {
+    "id": "analytic_1",
+    "question": "How do different configurations of flow control devices affect aerodynamic performance, and what recent developments have been made in this area?",
+    "question_zh": false,
+    "type": "analytic",
+    "ground_truth": "The actuator with the largest jet deflection angle, at the pressure ratios investigated, was the most efficient at controlling flow separation on the flap of the model. Oil flow visualization studies revealed that the flow field controlled by the sweeping jets was more three-dimensional than expected.",
+    "ground_truth_contexts": [
+      "**I. Introduction**\nHighmenting the technology on a commercial transport.-lift system efficiency via active flow control is[1] beingActive flow control (AFC) for a high-lift applicationstudied due to the potential benefits of impleseeks to replace the slat and fowler flap on a conventional high-lift system (CHL) with simple hinged leading and trailing edge flaps. AFC is required for flap separation control to enable the simplified high-lift (SHL) system to generate lift comparable to the CHL system. For an AFC-enabled high-lift system to be viable, it must be both e↵ective and efficient. In recent studies, fluidic actuators have been demonstrated to be e↵ective at controlling separation. In this paper, we present results from on-going research to optimize and thus improve the efficiency of sweeping jet (SWJ) actuators, a type of fluidic actuator, for high-lift applications. Efficiency optimization, thus far, has focused on maximizing lift increment while minimizing SWJ power requirements. \n\nAlthough fluidic actuators require an external pressure source, this technology has been used in many flow control experiments because the actuators have a simple design and can provide the control authority required. A SWJ actuator produces a jet that sweeps continuously from side to side because the actuator has no diverter at the exit. Gregory and Tomac[2] provide a review of fluidic actuators that describes the history of these devices, including their current use for flow control applications. Recent AFC demonstrations that used SWJ actuators include a full-scale AFC-enhanced vertical tail project consisting of a full-scale wind tunnel test to advance the technology[3][,][4][,][5] followed by a flight test.[5] Fluidic actuators have also been proven to be e↵ective in controlling flow separation thereby improving the aerodynamic performance of helicopter fuselages,[6] trucks,[7] blu↵bodies,[8] adverse gradient ramps,[9] wind turbine blades,[10] airfoils,[11][,][12] and wings.[13] The e↵ectiveness of fluidic actuators is believed to be due to momentum injection into the boundary layer and the production of unsteady streamwise vorticies. These streamwise vortices interact with the separated shear layer, improving mixing between the high momentum fluid in the separated shear layer and the low momentum fluid in the boundary layer. \n\nThe SWJ actuators under investigation are similar to the curved actuator design that was used in the computational study of Vatsa et al.[14] Several experimental studies have used a similar design.[15][,][9][,][16] Woszidlo and Wygnanski[11] used a di↵erent SWJ actuator design on an airfoil with a variable length flap chord and a variable flap deflection angle. Within the range of locations studied, the optimal excitation location was slightly downstream of the flap hinge line. They varied actuator spacing and concluded that actuator spacing was a function of jet sweep angle and the ratio of the SWJ actuator velocity to freestream velocity. Koklu[9] performed a parametric study where he varied actuator size, aspect ratio, and location on a ramp model. He reported that an aspect ratio of 2 was optimal for his configuration. Varying actuator size while holding actuator spacing fixed, he showed that the AFC efficiency diminished when the actuator size was below a \n\n2 of 15 \n\nAmerican Institute of Aeronautics and Astronautics \n\ncertain threshold. Seele et al.[17] varied actuator size and spacing on a swept wing configuration and found that their larger actuators were more efficient at controlling separation. A recent study of Hartwich et al.[18] suggests that additional research may be needed to optimize actuator geometry and spacing for high-lift applications. The CFD study shows that while SWJ actuators can be used to obtain the lift that would be required to replace a conventional high-lift system with an AFC-enabled high-lift system, the required mass flow exceeded the amount available on an aircraft by an order of magnitude. In this study, we vary actuator geometry for a fixed actuator orifice size to determine how the sweep angle and jet momentum produced by the di↵erent actuator geometries influence the separated flow field being controlled. \n\nThe SWJ actuators being investigated have an orifice width of 2 mm and height of 1 mm. The orifice size corresponds to that which will be used on the outboard region of the Fundamental Aerodynamics Subsonic/Transonic-Modular Active Control (FAST-MAC) model[19][,][20] for an upcoming high Reynolds number AFC wind tunnel experiment in the National Transonic Facility (NTF). Recent studies including that of Melton,[13] Koklu,[9] and Melton and Koklu[16] have noted that as actuator scale decreases, the sweep angle of the actuator decreases. The impact of this change is a potential reduction in the efficiency of the AFC system resulting from suboptimal actuator spacing. The original plan for the NTF AFC experiment was to use the curved SWJ design used in previous studies. However, the small sweep angle observed during benchtop testing of the actuator led us to explore other geometries for the outboard region of the FASTMAC model. In this paper, we compare benchtop data and wind tunnel data from the candidate actuator geometries investigated."
+    ],
+    "relevant_chunk_ids": [
+      "20160010108.pdf_2"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 1,
+      "thesis_relevant_chunk_ids": [
+        "20160010108.pdf_2"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20160010108.pdf_2",
+          "eval_id": "20160010108.pdf_2",
+          "method": "exact"
+        }
+      ]
+    }
+  },
+  {
+    "id": "analytic_2",
+    "question": "What are the main challenges and solutions in using composite materials for high-temperature aerospace applications?",
+    "question_zh": false,
+    "type": "analytic",
+    "ground_truth": "Polymer-based composites in gas turbine engines face significant thermal limitations due to their glass transition temperature (Tg), which can be as low as 100-200°C for epoxy matrices. This constraint has historically limited their use in high-temperature engine components. To address these thermal limitations, two main cooling strategies have been developed: (1) Internal vascular cooling, introduced in the 1940s, which involves passing cool air through hollow cavities within components, and (2) Film cooling, developed in the 1950s, where internal cool air is expelled through surface apertures to create an insulating boundary film of cool air between the component and the hot gas stream. The combination of film cooling with internal heat exchange has proven particularly effective for turbine blade thermal management and may enable the use of polymer composites in compressor stage components. This dual cooling approach requires careful optimization of the vascular network topology to balance thermal efficiency between internal and external cooling effects.",
+    "ground_truth_contexts": [
+      "**1. INTRODUCTION**\nThe increasing use of lightweight composite materials in primary aerospace structures promises to substantially reduce aircraft non-payload weight, thereby improving fuel consumption and operating profitability. Weight reduction through use of polymer based composites for gas turbine engine components, however, can prove challenging due to the fact that the maximum operating temperature for a fibre-reinforced polymer composite is constrained by the glass transition temperature, _Tg_ , which can be as low as 100 _[◦]_ C - 200 _[◦]_ C [1, 2] in the case of an epoxy matrix. Throughout the majority of a gas turbine cycle, gas stream temperatures exceed this range by a considerable margin. \n\nFrom the earliest gas turbine engines of the 1940s, turbine blade weakening at high temperature has been mitigated by passing cool air through hollow cavities within the blades [3]. In the 1950s, research was initiated on designs that expel the internal cool air flow into the external hot flow through apertures on the blade surface. This allows coolant to be swept back over the blade, coating the blade surface with a boundary film of cool air [4] that thermally insulates the metal from the hot stream. Film cooling combined with internal heat exchange has been shown to be an effective active cooling approach for turbine blades [5]. A similar approach may enable use of polymer composites for components in the compressor stage of a gas turbine engine. \n\nWhile there are a small number of publicly available studies on the use of internal vascular cooling in polymer composite materials, none so far consider the role film cooling can play in improving thermal design. Lyall (2008) examined a stiffened composite panel for satellite electronics systems, containing fluidic microchannels for cooling [6]. This study was developed by Williams (2010) to include structural and thermal analysis [7]. Kozola (2010) explored the use of composite material for a fin with an internal vascular network using water or oil as the \n\nMark W. McElroy, Andrew Lawrie, Ian P. Bond \n\ncoolant. Additionally, a one-dimensional numerical heat transfer model of the fin surface was developed [8]. Quantifying the overall efficiency of a component containing an internal vascular network is an important question and in their work, Pierce and Phillips (2010, 2011) included a mechanical evaluation of a panel containing vascular cooling networks [9, 10]. \n\nThe aim of this study is to explore the extension of carbon fibre-reinforced polymer (CFRP) materials to regions of gas turbine engines previously considered too hot for polymer composites. An active cooling strategy consisting of both internal vascular heat exchange and external boundary film cooling is investigated. The vascular network topology in a structural component requires careful consideration to balance thermal efficiency between the vascular and film cooling effects. An optimisation study is performed using a numerical model of a cooled composite panel to serve as demonstration of a systematic methodology for thermal design of compressor blades manufactured from polymer composites. Experimental work is included with the purpose of validation of the numerical model."
+    ],
+    "relevant_chunk_ids": [
+      "20160006321.pdf_2"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 2,
+      "thesis_relevant_chunk_ids": [
+        "20160006321.pdf_1"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20160006321.pdf_1",
+          "eval_id": "20160006321.pdf_2",
+          "method": "content"
+        }
+      ]
+    }
+  },
+  {
+    "id": "analytic_3",
+    "question": "What are the key considerations in modeling turbulent flows, particularly regarding viscosity and diffusion?",
+    "question_zh": false,
+    "type": "analytic",
+    "ground_truth": "Many zero-equation (i.e., algebraic) models relate the eddy diffusivity to the turbulent viscosity and a turbulent Prandtl number. The simplest expression for the turbulent Prandtl number is to prescribe a constant value, with 0.9 being common for boundary layers, while a value as low as 0.5 is more appropriate in free shear flows.",
+    "ground_truth_contexts": [
+      "**I. Introduction**\nInoften modeled using Reynolds’ analogy between momentum and energy together with an assumed constant simulations involving the Reynolds-averaged Navier-Stokes (RANS) equations, the turbulent heat flux is turbulent Prandtl number, _PrT_ . A value of 0.9 is common for boundary layers, while a value as low as 0.5 is more appropriate in free shear flows.[1] In many applications this approach works well enough for engineering accuracy, but in others the results can be sensitive to the value chosen. For example, Dembowski and Georgiadis[2] investigated the effect of adjusting the turbulent Prandtl number value on simulations of a Mach 2 heated round jet and found that while higher values of _PrT_ have little effect on the velocity field, they do reduce the thermal decay as one might expect. Turbulent Prandtl number variations also affect the mixing and combustion that occurs in reacting mixing layers. Simulation results[3] for a supersonic reacting mixing layer indicate that the ignition point moves upstream with increasing _PrT_ . Thus there exists some uncertainty in knowing what constant value to choose for a particular problem, and the optimal value for one case might not be optimal for others. In general the value of _PrT_ will vary throughout the flowfield. Kays[4,5] provides an excellent review of the fundamental theory involved in the definition of the turbulent \n\n2 of 22 \n\nAmerican Institute of Aeronautics and Astronautics \n\nPrandtl number and trends that can be observed from experimental data. Among the important things to note is that, for zero-pressure gradient boundary layers, a temperature law of the wall profile can be obtained, the slope of which is directly related to the turbulent Prandtl number. Unfortunately this profile is not universally applicable to other flows, as even the addition of favorable/adverse pressure gradients causes the slope of the temperature profile to increase/decrease respectively. Based upon available temperature data, the nominal value of turbulent Prandtl number in the log-layer region is 0.85 and is roughly constant if not slightly decreasing with distance from the wall. In the outer portion of the boundary layer, _PrT_ tends towards values between 0.5–0.7. In the near-wall region, _y_[+] _<_ 30, the data indicate a significant increase in _PrT_ to values as high as 2.0. For fluids such as air that have _Pr <_ 1 _._ 0, precise values of turbulent Prandtl number deep in the sublayer may seem irrelevant since the molecular heat transfer becomes dominant there. However, Kays notes that while prescribing the proper value of _PrT_ in the log-layer will result in the correct slope of the temperature profile, the only way to achieve the proper offset of the curve is by including higher values of _PrT_ in the region _y_[+] _<_ 30. \n\nAs with turbulence modeling, a number of different approaches have been taken in the area of turbulent heat flux modeling. Simple variable turbulent Prandtl number models such as those of References 5 and 6 are algebraic models that relate _PrT_ to other local flow quantities. Other models circumvent the need for a turbulent Prandtl number by relating the turbulent thermal diffusivity to the scalar variance of a thermal quantity such as temperature, and then solving modeled transport equations for that variance and its dissipation rate. Such models are akin to _k − ϵ_ eddy viscosity turbulence models. More sophisticated models solve transport equations for the heat fluxes themselves, much like what is done in Reynolds-stress transport models. For those cases that are amenable to Direct Numerical Simulation, no modeling is needed since the turbulent statistics (i.e., for the turbulent heat flux) can be obtained directly. \n\nA major hindrance to the development of advanced heat transfer models has been a lack of detailed, high-quality experimental data to calibrate and validate the models. Much of this can be attributed to the difficulty in obtaining simultaneous velocity and temperature measurements to evaluate the necessary turbulent statistics. For reacting flows, development of these models is further complicated by the consideration of turbulent-chemistry interaction effects, which are sometimes included through probability density function (PDF) formulations, and the issues involved in obtaining measurements in such a harsh and dynamic environment. Direct Numerical Simulation (DNS) data is available for some cases, though typically at low Reynolds number and for configurations with some degree of pseudo-periodicity such as channel flows. \n\nThere also seems to be a lack of comprehensive model comparisons. In the realm of turbulence modeling, one can point to the works of References 7–12 for direct and detailed analysis of various turbulence model formulations. Heat transfer models, however, are less frequently compared with other existing models, and finding independent model results for the same flow problem can be challenging. All of this makes it very difficult for one to draw any conclusions regarding which models work best across a range of cases. The objective of this paper is to provide such a comparison for one class of heat flux models, those involving the thermal diffusivity, and evaluate a number of these available models across a common set of validation cases."
+    ],
+    "relevant_chunk_ids": [
+      "20160010069.pdf_2",
+      "20160010069.pdf_2"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 3,
+      "thesis_relevant_chunk_ids": [
+        "20160010069.pdf_8",
+        "20160010069.pdf_9"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20160010069.pdf_8",
+          "eval_id": "20160010069.pdf_2",
+          "method": "content"
+        },
+        {
+          "thesis_id": "20160010069.pdf_9",
+          "eval_id": "20160010069.pdf_2",
+          "method": "content"
+        }
+      ]
+    }
+  },
+  {
+    "id": "analytic_10",
+    "question": "What parameters are important to consider when analyzing fluid dynamics in aerospace applications?",
+    "question_zh": false,
+    "type": "analytic",
+    "ground_truth": "The nomenclature includes several categories of variables: Geometric parameters: Ajet (sweeping jet orifice area, m²), b (wing span, m), c (airfoil chord at δf = 0°, m), s (wing semispan length, b/2, m), Sref (reference surface area, m²). Coefficients: CL (lift coefficient), Cµ (SWJ actuator momentum coefficient, defined as ṁUjet/(Sref q)), Cp (pressure coefficient, defined as (P - Ps)/q), Cp,TE (model trailing edge Cp), C⇡ (Power coefficient, defined as Q*Ps/(U₁Sref q)). Flow parameters: ṁ (mass flow rate, ρUjetAjet, g/s), P (pressure, Pa), Pa (ambient pressure, Pa), Pr (pressure ratio, Ps/Pa), Ps (actuator plenum static pressure, Pa), Q (Volume flow rate, m³/s), q (freestream dynamic pressure, ½ρU₁², Pa), Rec (Reynolds number based on chord). Velocity components: U and V (aligned with model coordinate system, m/s), Ujet (theoretical sweeping jet actuator orifice velocity, m/s), U₁ (average streamwise velocity, m/s). Other parameters: njet (total number of sweeping jet actuators), α (angle of attack, degrees), δf (flap deflection angle, degrees), ρ (density, kg/m³).",
+    "ground_truth_contexts": [
+      "**B. Model Description**\nThe model tested is a 0.305 m chord (c), 0.610 m semipan (s) wing with a NACA 0015 cross-section that was built for sidewall-mounted AFC testing in the BART facility.[21][,][22][,][23] The wing is unswept and has a 30% chord trailing edge flap that can be tested at flap deflection angles, _δf_ , from -10 _[◦]_ to 40 _[◦]_ in 10 _[◦]_ increments. The 0.61 m span flap is split into three equal-span components that can be deflected independently. The model has four rows of streamwise pressure taps at spanwise ( _y/s_ ) locations of -0.17, - 0.50, -0.83, and -0.99 and four rows of spanwise pressure taps at streamwise ( _x/c_ ) locations of 0.0050, 0.30, 0.77, and 1.0. A 5-component strain gauge balance was used to measure forces and moment on the model. \n\nDuring the SWJ actuator study using the swept wing version of the model,[13] the existing aft region of the model was modified so that SWJ actuators could be placed in the aft region of the main element \n\n3 of 15 \n\nAmerican Institute of Aeronautics and Astronautics"
+    ],
+    "relevant_chunk_ids": [
+      "20160010108.pdf_3"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 10,
+      "thesis_relevant_chunk_ids": [
+        "20160010108.pdf_3"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20160010108.pdf_3",
+          "eval_id": "20160010108.pdf_3",
+          "method": "exact"
+        }
+      ]
+    }
+  }
+]
