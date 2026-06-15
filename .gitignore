@@ -1,0 +1,21 @@
+.env
+vector_index/
+__pycache__/
+*.pyc
+.pytest_cache/
+nasa_download.log
+*.partial.json
+chunk_statistics*.json
+temp_chunks/
+temp_skipped_chunks/
+data/
+
+# WebUI 配置文件（含 API 密钥）
+webui/app_settings.json
+webui/model_configs.json
+
+# 日志文件
+*.log
+
+# 评估运行产物
+evaluation/results/

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "question": "What were the different types of apatite identified in the Chassigny meteorite and how did they differ in chlorine content?",
+    "expected_answer": "Three different apatite textural types were identified in the Chassigny meteorite. Type 1 occurs as anhedral grains in intercumulus regions, less than 15 μm in size, with the highest proportion of Cl (0.40 to 0.65 Cl/(OH+F+Cl)). Type 2 are larger grains (100 μm) associated with coarse-grained olivine and chromite, with intermediate Cl content (0.35 to 0.40 Cl/(OH+F+Cl)). Fine-grained apatite (<5 μm) occurs in melt inclusions in olivine and has the lowest Cl proportion (0.04 to 0.27 Cl/(OH+F+Cl)).",
+    "relevant_chunk_ids": ["20170001706.pdf_3"]
+  },
+  {
+    "id": 2,
+    "question": "What is the problem with Boolean and faceted search systems when searching for items by attribute values?",
+    "expected_answer": "Boolean and faceted search systems are rigid and often create difficulties for users. Boolean retrieval often yields no results or too many results, as users might misremember attribute values (like a paper's publication year) or set constraints that are too strict. These systems fail to understand what the user is seeking and don't allow for trading off among conflicting criteria. They explicitly manage result sets through hard constraints rather than implicitly estimating relevance to the user's intent.",
+    "relevant_chunk_ids": ["20190028246.pdf_6"]
+  },
+  {
+    "id": 3,
+    "question": "What are the two Cl isotopic reservoirs discovered on Mars through the Chassigny meteorite analysis?",
+    "expected_answer": "Two Cl isotopic reservoirs exist on Mars: (1) an isotopically light-Cl mantle reservoir (δ37Cl=-4 to -6‰), which exhibits limited variability and is the same for depleted and enriched mantle sources, and (2) an isotopically heavy-Cl crustal reservoir (δ37Cl>0), which exhibits significant variability. The mantle component is preserved in melt inclusions that also hosts the solar noble gas composition documented in Chassigny.",
+    "relevant_chunk_ids": ["20170001706.pdf_4"]
+  },
+  {
+    "id": 4,
+    "question": "What measurement technique was used to analyze chlorine isotopes in the Chassigny meteorite?",
+    "expected_answer": "The Cl isotope measurements were carried out by isotopic imaging with the JSC CAMECA NanoSIMS 50L ion microprobe. Isotopic images of 16O, 16OH, 31P, 35Cl and 37Cl were obtained by rastering a 3-4 pA Cs+ primary ion beam over 8-15 micrometer fields of view. Secondary ions were collected in multi-detection mode using electron multipliers at a mass resolving power of >9,000. The images were processed using software developed at JSC by S. Messenger to correct for various factors and align successive image planes.",
+    "relevant_chunk_ids": ["20170001706.pdf_2"]
+  },
+  {
+    "id": 5,
+    "question": "What boundary treatment approach is used in the Computational Aeroacoustics paper and what are the findings regarding damping profile polynomials?",
+    "expected_answer": "The boundary treatment uses a damping layer around the numerical domain, with damping implemented with full accuracy by including damping terms in the governing equations used for Cauchy-Kowaleskya recursion. The combination of interior domain and damping layer is closed by setting all propagating variables to zero on the outer boundary. The numerical experiments used damping profile polynomials of 2nd, 4th, 6th, and 8th order, finding that any of the three higher order profiles produce lower errors than the quadratic profile. The optimal choice depends on the algorithm, its order, damping layer width, and simulation time.",
+    "relevant_chunk_ids": ["20170009149.pdf_2"]
+  }
+]

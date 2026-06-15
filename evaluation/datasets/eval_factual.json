@@ -1,0 +1,137 @@
+[
+  {
+    "id": "factual_1",
+    "question": "What were the different types of apatite identified in the Chassigny meteorite and how did they differ in chlorine content?",
+    "question_zh": false,
+    "type": "factual",
+    "ground_truth": "Three different apatite textural types were identified in the Chassigny meteorite. Type 1 occurs as anhedral grains in intercumulus regions, less than 15 μm in size, with the highest proportion of Cl (0.40 to 0.65 Cl/(OH+F+Cl)). Type 2 are larger grains (100 μm) associated with coarse-grained olivine and chromite, with intermediate Cl content (0.35 to 0.40 Cl/(OH+F+Cl)). Fine-grained apatite (<5 μm) occurs in melt inclusions in olivine and has the lowest Cl proportion (0.04 to 0.27 Cl/(OH+F+Cl)).",
+    "ground_truth_contexts": [
+      "Results:\nFor this study, we designated three different apatite textural types in the Chassigny meteorite. “Type 1” occurs as anhedral grains closely associated with the intercumulus regions that are interstitial to the olivine. The intercumulus regions of Chassigny consist of 2 feldspars, silica, and glass. These apatites are commonly less than 15 µm. “Type 2” apatite occurs as significantly larger grains (100 µm in length) that are closely associated with the coarse-grained olivine and chromite. Finally, fine-grained apatite (< 5 µm) occurs in large melt inclusions in the olivine. One of the key differences among apatite textural groups is in the composition of their halogen site. Within an OHF-Cl ternary plot, apatite from Chassigny generally plots along the F-Cl join with some individual grains containing up to 0.1 OH/(OH+Cl+F) component. Type 1 apatite has the highest proportion of Cl in the halogen site with between 0.40 to 0.65 Cl/(OH+F+Cl). The apatites in the melt inclusions have the lowest proportion of Cl in the halogen site with between 0.04 to 0.27 Cl/(OH+F+Cl). Type 2 apatite is intermediate between these two textural types with a Cl/(OH+F+Cl) of 0.35 to 0.40. These ratios translate to a range in Cl from 0.80 to 3.9 wt.% and F from 1.3 to 3.5 wt%. A key observation from the Cl isotopic measurements is that the δ[37] Cl measured in Chassigny apatites exhibit a considerable range (≈10‰) that is directly linked to textural type and apatite composition. This range in δ[37] Cl approaches that observed in all martian meteorites (≈15‰). The melt inclusion apatites and interiors of the large type 2 apatites are enriched in light Cl, whereas the intercumulate apatites are enriched in heavy Cl."
+    ],
+    "relevant_chunk_ids": [
+      "20170001706.pdf_4"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 1,
+      "thesis_relevant_chunk_ids": [
+        "20170001706.pdf_3"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20170001706.pdf_3",
+          "eval_id": "20170001706.pdf_4",
+          "method": "content"
+        }
+      ]
+    }
+  },
+  {
+    "id": "factual_2",
+    "question": "What is the problem with Boolean and faceted search systems when searching for items by attribute values?",
+    "question_zh": false,
+    "type": "factual",
+    "ground_truth": "Boolean and faceted search systems are rigid and often create difficulties for users. Boolean retrieval often yields no results or too many results, as users might misremember attribute values (like a paper's publication year) or set constraints that are too strict. These systems fail to understand what the user is seeking and don't allow for trading off among conflicting criteria. They explicitly manage result sets through hard constraints rather than implicitly estimating relevance to the user's intent.",
+    "ground_truth_contexts": [
+      "**1 INTRODUCTION**\nSearching for items by their attribute values or metadata is a commonplace task today. For example, consider searching for a particular research paper you recall as published in 2013, or computer monitors under $200. Current search tools support a retrieval style more akin to a database than a modern information retrieval system, most often with faceted or Boolean search. In that model, users place hard constraints on acceptable attribute values to limit the result set. \n\nUnfortunately, this rigid style of retrieval often creates difficulties for the user. In the examples above, what if the sought research paper was published in 2012, not 2013 as remembered? There are thousands of computer monitors under $200, far too many to examine, but constraining all desired attributes might yield no results. And what if a monitor that best fits the user’s desire is just outside the stated range, listing at $213? Boolean retrieval often yields no results or too many. Faceted search usually avoids empty result sets, but the facets are often pre-computed and may not match the user’s intent well. \n\nThe problem with such retrieval systems is that they do not try to understand what the user is seeking. Instead, they give the user a tool to _explicitly_ manage the result set by stating what to return and how to order it. In this paper, we explore an alternative approach that is more aligned with current information retrieval approaches – _implicitly_ managing result sets by estimating relevance to a description of the sought item. We model the user’s utility function, and in the process, allow the system to trade off among conflicting criteria on the user’s behalf, and in this way get closer to the underlying query intent. In contrast to the Boolean and faceted approaches in use today, our approach does not use constraints. \n\nWe evaluate this new approach against the _de facto_ standard of Boolean retrieval and several models proposed in the literature in two user studies using Amazon Mechanical Turk[1] . The domains and tasks in these user studies are diverse, with one involving searching for airline tickets and in the other for healthy (daily) meal plans. In both studies, test subjects read a short scenario and used a randomly chosen retrieval model to find an appropriate item (ticket or meal plan). We ask the following questions: \n\n- **RQ1** Which approach and specific retrieval algorithm is most effective? \n\n- **RQ2** Are constraints beneficial or harmful? \n\nPublication rights licensed to ACM. ACM acknowledges that this contribution was authored or co-authored by an employee, contractor or affiliate of the United States government. As such, the Government retains a nonexclusive, royalty-free right to publish or reproduce this article, or to allow others to do so, for Government purposes only. _SIGIR ’18, July 8–12, 2018, Ann Arbor, MI, USA_ \n\n> © 2018 Copyright held by the owner/author(s). Publication rights licensed to ACM. ACM ISBN 978-1-4503-5657-2/18/07...$15.00 https://doi.org/10.1145/3209978.3210053 \n\n- **RQ3** How should results be ordered? \n\n- In this work, we make the following contributions: \n\n- (1) We cast the item retrieval problem as finding the item with the most desirable combination of attribute values, and use utility theory to develop a basic model. \n\n> 1http://www.mturk.com \n\nSIGIR ’18, July 8–12, 2018, Ann Arbor, MI, USA \n\nS. Wolfe, Y. Zhang \n\n- (2) We expand upon the basic retrieval model by developing subutility models that estimate the utility of every possible value of each attribute. \n\n- (3) We develop a Bayesian hierarchical model around our item utility model so the models’ parameters can be fit to data of users’ selections. \n\n- (4) We evaluate our novel item retrieval model against the two common approaches, Boolean and faceted retrieval, along with several models from the literature, in two user studies in very different domains. \n\nThe rest of this paper is organized as follows. In section 2, we review the related research and introduce the previously published methods included in our study. In Section 3, we introduce an initial retrieval method based on multi-criteria decision-making theory and a subsequent enhancement to that method. The learning framework we later use to tune this model’s parameters is described in Section 4. In Section 5, we detail the design of our two user studies, including the baseline retrieval methods that we include for comparison. Finally, we present the results of these user studies in Section 6 and present our conclusions in Section 7."
+    ],
+    "relevant_chunk_ids": [
+      "20190028246.pdf_4"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 2,
+      "thesis_relevant_chunk_ids": [
+        "20190028246.pdf_6"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20190028246.pdf_6",
+          "eval_id": "20190028246.pdf_4",
+          "method": "content"
+        }
+      ]
+    }
+  },
+  {
+    "id": "factual_3",
+    "question": "What are the two Cl isotopic reservoirs discovered on Mars through the Chassigny meteorite analysis?",
+    "question_zh": false,
+    "type": "factual",
+    "ground_truth": "Two Cl isotopic reservoirs exist on Mars: (1) an isotopically light-Cl mantle reservoir (δ37Cl=-4 to -6‰), which exhibits limited variability and is the same for depleted and enriched mantle sources, and (2) an isotopically heavy-Cl crustal reservoir (δ37Cl>0), which exhibits significant variability. The mantle component is preserved in melt inclusions that also hosts the solar noble gas composition documented in Chassigny.",
+    "ground_truth_contexts": [
+      "Discussion:\nThe measurement of the δ[37] Cl in apatite in martian meteorite Chassigny confirms that two Cl isotopic reservoirs exist on Mars: (1) an isotopically light-Cl mantle reservoir (δ[37] Cl=-4 to -6‰), which exhibits limited variability and is the same for depleted and enriched mantle sources and (2) an isotopically heavy-Cl crustal reservoir (δ[37] Cl>0), which exhibits significant variability [7-9]. The mantle component is preserved in melt inclusions that also hosts the solar noble gas composition documented in Chassigny [10]. The preservation of these two distinct components in a single meteorite provides petrogenetic insights into the interaction between these two reservoirs and constrains the relationship between two major martian crustal lithologies (chassignites, nakhlites). The existence of these two reservoirs has profound implication for the evolution of the martian atmosphere, the nature of material that accreted to form Mars, and volatiles in the solar nebula. Mars accreted from materials that were dominated by light Cl and probably represent the Cl isotope composition\n\nof the Sun and proto-nebular disk. The enrichment of the crust in heavy Cl resulted from protracted loss of 35Cl to space, started early in the history of Mars. The light Cl signature of accreting materials that formed Mars is different from the Earth, Moon, and many primitive meteorites. These differences represent distinct Cl and volatile reservoirs in the solar nebula. The low δ[37] Cl reservoir represents the primordial Solar System composition from which Mars accreted. The higher δ[37] Cl values observed for the Earth, Moon, and many chondrites are not primordial, rather they represent the later incorporation of[37] Cl-enriched HClhydrates into accreting material [8]. \n\nSwindle [10] used the isotopic composition of Chassigny as the starting point for modeling the mass fractionation of the Martian atmosphere. Examining the potential of crustal and mantle Cl isotope components in Chassigny and the other chassignites will allow us to better unravel the origins of the noble gas components. Finally, the SAM instrument on the Mars Science Lab has reported Cl isotopic composition of material from Gale Crater [9], characterized by a wide variation in δ[37] Cl that is not reproduced in the martian meteorites. Further analyses of δ[37] Cl components in martian meteorites may provide a deeper understanding of these new results from the martian surface."
+    ],
+    "relevant_chunk_ids": [
+      "20170001706.pdf_5"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 3,
+      "thesis_relevant_chunk_ids": [
+        "20170001706.pdf_4"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20170001706.pdf_4",
+          "eval_id": "20170001706.pdf_5",
+          "method": "content"
+        }
+      ]
+    }
+  },
+  {
+    "id": "factual_4",
+    "question": "What measurement technique was used to analyze chlorine isotopes in the Chassigny meteorite?",
+    "question_zh": false,
+    "type": "factual",
+    "ground_truth": "The Cl isotope measurements were carried out by isotopic imaging with the JSC CAMECA NanoSIMS 50L ion microprobe. Isotopic images of 16O, 16OH, 31P, 35Cl and 37Cl were obtained by rastering a 3-4 pA Cs+ primary ion beam over 8-15 micrometer fields of view. Secondary ions were collected in multi-detection mode using electron multipliers at a mass resolving power of >9,000. The images were processed using software developed at JSC by S. Messenger to correct for various factors and align successive image planes.",
+    "ground_truth_contexts": [
+      "Analytical Approach:\nWe identified numerous apatite targets in the Chassigny meteorite using the JEOL electron microprobe housed at the University of New Mexico. The apatite grains were documented through backscatter electron imaging, major and minor elements using X-ray mapping, and quantitative analysis. The apatite ranged in size from 2 to 50"
+    ],
+    "relevant_chunk_ids": [
+      "20170001706.pdf_2"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 4,
+      "thesis_relevant_chunk_ids": [
+        "20170001706.pdf_2"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20170001706.pdf_2",
+          "eval_id": "20170001706.pdf_2",
+          "method": "exact"
+        }
+      ]
+    }
+  },
+  {
+    "id": "factual_5",
+    "question": "What boundary treatment approach is used in the Computational Aeroacoustics paper and what are the findings regarding damping profile polynomials?",
+    "question_zh": false,
+    "type": "factual",
+    "ground_truth": "The boundary treatment uses a damping layer around the numerical domain, with damping implemented with full accuracy by including damping terms in the governing equations used for Cauchy-Kowaleskya recursion. The combination of interior domain and damping layer is closed by setting all propagating variables to zero on the outer boundary. The numerical experiments used damping profile polynomials of 2nd, 4th, 6th, and 8th order, finding that any of the three higher order profiles produce lower errors than the quadratic profile. The optimal choice depends on the algorithm, its order, damping layer width, and simulation time.",
+    "ground_truth_contexts": [
+      "**I. Introduction**\nAeroacoustics research has benefited from improved numerical methods and more powerful computers, so that computation is increasingly valuable as a source of insight and as a design tool.[3,19,24,30] Even with the best methods and computers, numerical simulations must have a finite computational domain. Closing and limiting a numerical domain with a boundary treatment is a critical element for Computational Aeroacoustics (CAA). A desirable boundary treatment limits the error in the numerical solution while using an affordable computational domain. Reviews of the ongoing work on this challenge include.[2,7,13,16,17,25,29] Artificial boundary treatments that use a bounding zone that surrounds a computational domain include Perfectly Matched Layers[4,14,18,21] and a Sponge Zone or Damping Layer.[1,20,22,23] Examples of widely used Artificial Boundary Conditions that do not require layers or zones are Hedstrom,[15] Thompson[26–28] and Giles.[5,6] \n\nIn this paper we present results from numerical experiments for propagating a continuous acoustic pressure signal in 2D with a uniform flow or with a steady parallel jet. Acoustic propagation is by means of the Linearized Euler Equations (LEE) in Cartesian coordinates. These computations use variations of Hermite/Cauchy-Kowaleskya/Taylor algorithms[8–12] to propagate the solution variables in the numerical domain and the damping layer. The algorithms in this paper use only data for the primitive variables, so \n\n> _∗_ Research Engineer, Acoustics Branch. \n\n1 of 20 \n\nAmerican Institute of Aeronautics and Astronautics \n\nthey are not strictly Hermite methods which use data for derivatives, and are more precisely CenteredStaggered/Cauchy-Kowaleskya/Taylor algorithms. We present results for the c4o0, c6o0, c8o0 and c10o0 methods on staggered two dimensional stencils that are four, six, eight and ten points wide, and that are third, fifth, seventh and ninth order accurate in both space and time, respectively. The results for propagating an acoustic signal with a steady parallel jet flow are only from the seventh order c8o0 algorithm. The boundary treatment has a damping layer around the numerical domain, and damping is implemented with the full accuracy of the time propagation by including damping terms in the governing equations which are used for the Cauchy-Kowaleskya recursion. The combination of the interior numerical domain and the surrounding damping layer is closed by setting all propagating variables to zero on the outer boundary of the damping layer. \n\nOur concern here is with the effect on the accuracy of the numerical solution of the complete boundary treatment with both damping layers and outer boundary conditions. We present results of numerical experiments in order to validate this complete boundary treatment when used with Centered-Staggered/CauchyKowaleskya/Taylor algorithms. The results reported here are comparable to what has been reported in[11] for the same acoustic simulation with similar grids, but with a third order Hermite/Cauchy-Kowaleskya/Taylor algorithm and a complex characteristic outer boundary condition. A particular question that arose from[11] is whether there is any reason to use a damping polynomial other than a quadratic. The numerical experiments that are reported here use damping profile polynomials of 2 _[nd]_ , 4 _[th]_ , 6 _[th]_ and 8 _[th]_ order, and the results show that any of the three higher order profiles will produce lower errors from the boundary treatment than the quadratic profile. Which of these three higher powers is optimal depends somewhat upon the algorithm, or its order, the damping layer width and the simulation time. In addition, the complexity of characteristic based outer boundary conditions has raised the question of whether a simpler boundary treatment could provide similar levels of accuracy. The results that we report here show that the essentially trivial outer boundary closer of the damping layer that we use actually provides comparable accuracy to the complex characteristic outer boundary condition as reported in.[11]"
+    ],
+    "relevant_chunk_ids": [
+      "20170009149.pdf_1"
+    ],
+    "metadata": {
+      "source": "master_thesis_rag",
+      "original_id": 5,
+      "thesis_relevant_chunk_ids": [
+        "20170009149.pdf_2"
+      ],
+      "remap": [
+        {
+          "thesis_id": "20170009149.pdf_2",
+          "eval_id": "20170009149.pdf_1",
+          "method": "content"
+        }
+      ]
+    }
+  }
+]

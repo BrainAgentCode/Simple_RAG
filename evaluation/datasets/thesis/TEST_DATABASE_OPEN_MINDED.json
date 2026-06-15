@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": "How do different configurations of flow control devices affect aerodynamic performance, and what recent developments have been made in this area?",
+    "expected_answer": "The actuator with the largest jet deflection angle, at the pressure ratios investigated, was the most efficient at controlling flow separation on the flap of the model. Oil flow visualization studies revealed that the flow field controlled by the sweeping jets was more three-dimensional than expected.",
+    "relevant_chunk_ids": ["20160010108.pdf_2"]
+  },
+  {
+    "id": 2,
+    "question": "What are the main challenges and solutions in using composite materials for high-temperature aerospace applications?",
+    "expected_answer": "Polymer-based composites in gas turbine engines face significant thermal limitations due to their glass transition temperature (Tg), which can be as low as 100-200°C for epoxy matrices. This constraint has historically limited their use in high-temperature engine components. To address these thermal limitations, two main cooling strategies have been developed: (1) Internal vascular cooling, introduced in the 1940s, which involves passing cool air through hollow cavities within components, and (2) Film cooling, developed in the 1950s, where internal cool air is expelled through surface apertures to create an insulating boundary film of cool air between the component and the hot gas stream. The combination of film cooling with internal heat exchange has proven particularly effective for turbine blade thermal management and may enable the use of polymer composites in compressor stage components. This dual cooling approach requires careful optimization of the vascular network topology to balance thermal efficiency between internal and external cooling effects.",
+    "relevant_chunk_ids": ["20160006321.pdf_1"]
+  },
+  {
+    "id": 3,
+    "question": "What are the key considerations in modeling turbulent flows, particularly regarding viscosity and diffusion?",
+    "expected_answer": "Many zero-equation (i.e., algebraic) models relate the eddy diffusivity to the turbulent viscosity and a turbulent Prandtl number. The simplest expression for the turbulent Prandtl number is to prescribe a constant value, with 0.9 being common for boundary layers, while a value as low as 0.5 is more appropriate in free shear flows.",
+    "relevant_chunk_ids": ["20160010069.pdf_8", "20160010069.pdf_9"]
+  },
+  {
+    "id": 4,
+    "question": "What kinds of unexpected thermal control issues can arise during spacecraft testing, and how do they impact mission planning?",
+    "expected_answer": "During the satellite-level thermal vacuum test of CALIPSO, which aimed to demonstrate positive thermal control of all payload components within their required temperature limits under simulated hot and cold flight environments, a critical sizing issue was discovered with the Integrated Lidar Transmitter (ILT) radiator. The test revealed that the ILT radiator was oversized because the actual power dissipation within the lasers was significantly lower than the pre-launch predictions. This sizing issue had important operational implications: with the original radiator size, the operational heater (rated at 20.7 W) would be insufficient to maintain the operating laser's pedestal temperature at its required 17°C set point. This discovery prompted further analysis to explore resizing options for the ILT radiator to ensure proper thermal control. The issue was significant enough to be potentially mission-ending, but was ultimately resolved through collaborative efforts among the thermal control teams.",
+    "relevant_chunk_ids": ["20070021525.pdf_11", "20070021525.pdf_12"]
+  },
+  {
+    "id": 5,
+    "question": "What organizational factors contribute to successful spacecraft thermal management?",
+    "expected_answer": "One of the most important factors in the success of the CALIPSO mission has been the high degree of cooperation among all parties responsible for the various thermal control aspects of CALIPSO. This cooperative nature was particularly evident in the development of a solution to the potentially mission-ending laser radiator issue.",
+    "relevant_chunk_ids": ["20070021525.pdf_12"]
+  },
+  {
+    "id": 6,
+    "question": "How should spacecraft teams approach the management of critical mechanical components throughout a mission's lifecycle?",
+    "expected_answer": "After two and one-half years of operational use, a bearing cage instability trend developed in a bearing in one of three Cassini reaction wheels. The lesson learned was to manage reaction wheel assemblies as a limited resource: track RWA performance beginning with acceptance test and throughout mission operations to identify potential limitations on reaction wheel lifespan, take measures to mitigate mission impact, use software tools to manage reaction wheel biasing events, and implement a reaction wheel drag torque estimator in flight software to identify anomalous bearing drag conditions.",
+    "relevant_chunk_ids": ["https://llis.nasa.gov/lesson/1598"]
+  },
+  {
+    "id": 7,
+    "question": "What role do design specifications and modifications play in space instrument reliability?",
+    "expected_answer": "After some two days of flight aboard Spacelab 3, the Atmospheric Trace Molecule Spectroscopy (ATMOS) instrument failed when the laser did not turn on for occultation 75. The laser failed due to a high voltage arc-over, which resulted from a pressure loss in the laser housing. Investigation revealed that the pressure loss was caused by use of machine screws of excessive length. The housing had been modified, based on a Material Review Board decision, which resulted in threaded holes of a different length than the original design drawings.",
+    "relevant_chunk_ids": ["https://llis.nasa.gov/lesson/393"]
+  },
+  {
+    "id": 8,
+    "question": "What are the key design considerations for spacecraft propulsion systems to ensure long-term reliability?",
+    "expected_answer": "The pressure regulator in the Viking Orbiter-1 Propulsion Subsystem leaked when it was brought back on-line by the opening of an explosive valve which had isolated the regulator and propellant tanks from the pressurant tanks. Design corrective measures recommended for propulsion pressurization subsystems included: using separate regulators for the fuel and oxidizer sides, incorporating a bellows in the pyro valve to eliminate blowby, and adding an isolation valve between the regulator and propellant tank to minimize propellant migration into the regulator.",
+    "relevant_chunk_ids": ["https://llis.nasa.gov/lesson/420"]
+  },
+  {
+    "id": 9,
+    "question": "How do electrical system modifications impact spacecraft reliability, and what precautions should be taken?",
+    "expected_answer": "In an effort to take advantage of spare telemetry channels in the Command and Data System (CDS) hardware, the Attitude Reference Unit (ARU) motor current telemetry was added to the CDS analog telemetry channels of the Magellan Spacecraft. This addition violated the VRM 2-260 'Electrical Grounding and Interfacing' specification without obtaining a waiver. Subsequent failure of the chassis ground path, caused by a poor mechanical connection at the attitude and articulation control subsystem single point ground, resulted in substantial damage to the MGN CDS analog telemetry circuitry, requiring rework of the CDS and resulting in a late delivery to the spacecraft at Kennedy Space Center.",
+    "relevant_chunk_ids": ["https://llis.nasa.gov/lesson/379"]
+  },
+  {
+    "id": 10,
+    "question": "What parameters are important to consider when analyzing fluid dynamics in aerospace applications?",
+    "expected_answer": "The nomenclature includes several categories of variables: Geometric parameters: Ajet (sweeping jet orifice area, m²), b (wing span, m), c (airfoil chord at δf = 0°, m), s (wing semispan length, b/2, m), Sref (reference surface area, m²). Coefficients: CL (lift coefficient), Cµ (SWJ actuator momentum coefficient, defined as ṁUjet/(Sref q)), Cp (pressure coefficient, defined as (P - Ps)/q), Cp,TE (model trailing edge Cp), C⇡ (Power coefficient, defined as Q*Ps/(U₁Sref q)). Flow parameters: ṁ (mass flow rate, ρUjetAjet, g/s), P (pressure, Pa), Pa (ambient pressure, Pa), Pr (pressure ratio, Ps/Pa), Ps (actuator plenum static pressure, Pa), Q (Volume flow rate, m³/s), q (freestream dynamic pressure, ½ρU₁², Pa), Rec (Reynolds number based on chord). Velocity components: U and V (aligned with model coordinate system, m/s), Ujet (theoretical sweeping jet actuator orifice velocity, m/s), U₁ (average streamwise velocity, m/s). Other parameters: njet (total number of sweeping jet actuators), α (angle of attack, degrees), δf (flap deflection angle, degrees), ρ (density, kg/m³).",
+    "relevant_chunk_ids": ["20160010108.pdf_3"]
+  }
+]
