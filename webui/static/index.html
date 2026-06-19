@@ -187,6 +187,7 @@ html,body{font-family:var(--font-sans);background:var(--bg-body);color:var(--tex
       <div class="settings-field"><label class="settings-label">Temperature</label><input class="settings-input" type="number" name="temperature" id="s_temperature" step="0.1" min="0" max="2"></div>
       <div class="settings-field"><label class="settings-label">最大 Token 数</label><input class="settings-input" type="number" name="max_tokens" id="s_max_tokens" step="256" min="256" max="16384"></div>
       <div class="settings-field"><label class="settings-label">最大并发数</label><input class="settings-input" type="number" name="llm_max_workers" id="s_llm_max_workers" min="1" max="32"></div>
+      <div class="settings-field full-width"><button type="button" class="btn-settings" onclick="testLLM()" style="width:100%">测试连接</button><div id="llm-test-result" style="margin-top:8px;font-size:.85rem;color:var(--text-secondary)">点击测试 LLM 连接</div></div>
     </div></div>
     <div class="settings-section"><div class="settings-section-title">向量嵌入</div><div class="settings-grid">
       <div class="settings-field"><label class="settings-label">嵌入模型</label><input class="settings-input" name="embedding_model" id="s_embedding_model"></div>
@@ -207,7 +208,7 @@ html,body{font-family:var(--font-sans);background:var(--bg-body);color:var(--tex
       <div class="settings-field"><label class="settings-label">Reranker 设备</label><select class="settings-select" name="reranker_device" id="s_reranker_device"><option value="auto">auto</option><option value="cpu">cpu</option><option value="cuda">cuda</option></select></div>
     </div></div>
     <div class="settings-section"><div class="settings-section-title">翻译设置</div><div class="settings-grid">
-      <div class="settings-field"><label class="settings-label">翻译模式</label><select class="settings-select" name="deepl_api_mode" id="s_deepl_api_mode" onchange="toggleTranslation(this.value)"><option value="deepl">DeepL</option><option value="openai">OpenAI 翻译</option></select></div>
+      <div class="settings-field"><label class="settings-label">翻译模式</label><select class="settings-select" name="deepl_api_mode" id="s_deepl_api_mode" onchange="toggleTranslation(this.value)"><option value="none">不需要翻译</option><option value="deepl">DeepL</option><option value="openai">OpenAI 翻译</option></select></div>
       <div class="settings-field" id="f_trans_key"><label class="settings-label" id="lbl_trans_key">DeepL API Key</label><input class="settings-input" type="password" name="deepl_api_key" id="s_deepl_api_key"></div>
       <div class="settings-field" id="f_trans_url"><label class="settings-label" id="lbl_trans_url">DeepL API URL</label><input class="settings-input" name="deepl_api_url" id="s_deepl_api_url"></div>
     </div></div>
@@ -220,16 +221,19 @@ html,body{font-family:var(--font-sans);background:var(--bg-body);color:var(--tex
   <div class="settings-header"><div class="settings-title">知识库设置</div><button class="settings-close" onclick="closeKBSettings()">✕</button></div>
   <div class="settings-body">
     <div class="settings-section"><div class="settings-section-title">数据路径</div><div class="settings-grid">
-      <div class="settings-field full-width"><label class="settings-label">数据目录</label><input class="settings-input" id="kb_data_path" readonly></div>
-      <div class="settings-field full-width"><label class="settings-label">向量索引目录</label><input class="settings-input" id="kb_index_path" readonly></div>
+      <div class="settings-field full-width"><label class="settings-label">数据目录</label><input class="settings-input" id="kb_data_path"></div>
+      <div class="settings-field full-width"><label class="settings-label">向量索引目录</label><input class="settings-input" id="kb_index_path"></div>
+      <div class="settings-field full-width"><label class="settings-label">测试结果</label><div id="kb-test-result" style="padding:8px 12px;font-size:.85rem;color:var(--text-secondary)">点击测试按钮验证路径</div></div>
     </div></div>
     <div class="settings-section"><div class="settings-section-title">状态</div><div class="settings-grid">
-      <div class="settings-field full-width"><label class="settings-label">文件数量</label><div id="kb-file-count" style="padding:8px 12px;font-size:.85rem;color:var(--text-primary)">加载中...</div></div>
-      <div class="settings-field full-width"><label class="settings-label">索引状态</label><div id="kb-index-status" style="padding:8px 12px;font-size:.85rem;color:var(--text-primary)">加载中...</div></div>
+      <div class="settings-field full-width"><label class="settings-label">文件数量</label><div id="kb-file-count" style="padding:8px 12px;font-size:.85rem;color:var(--text-secondary)">未加载</div></div>
+      <div class="settings-field full-width"><label class="settings-label">索引状态</label><div id="kb-index-status" style="padding:8px 12px;font-size:.85rem;color:var(--text-secondary)">未加载</div></div>
     </div></div>
   </div>
   <div class="settings-actions">
+    <button class="btn-settings" onclick="testKBPath()">测试路径</button>
     <button class="btn-settings" onclick="closeKBSettings()">关闭</button>
+    <button class="btn-settings primary" onclick="saveKBSettings()">保存</button>
     <button class="btn-settings primary" onclick="closeKBSettings();rebuildKB()">重建索引</button>
   </div>
 </div></div>
@@ -363,8 +367,11 @@ function toggleProvider(v) {
 }
 function toggleTranslation(v) {
   var isOpenAI = (v === 'openai');
+  var isNone = (v === 'none');
   document.getElementById('lbl_trans_key').textContent = isOpenAI ? 'API Key' : 'DeepL API Key';
   document.getElementById('lbl_trans_url').textContent = isOpenAI ? 'Base URL' : 'DeepL API URL';
+  document.getElementById('f_trans_key').style.display = isNone ? 'none' : '';
+  document.getElementById('f_trans_url').style.display = isNone ? 'none' : '';
   if (isOpenAI) {
     document.getElementById('s_deepl_api_key').value = document.getElementById('s_openai_api_key').value;
     document.getElementById('s_deepl_api_url').value = document.getElementById('s_openai_base_url').value;
@@ -384,6 +391,29 @@ function toggleGPUField() {
   } else {
     fUseGpu.style.display = '';
     fGpuId.style.display = gpuEnabled ? '' : 'none';
+  }
+}
+async function testLLM() {
+  var resultEl = document.getElementById('llm-test-result');
+  resultEl.textContent = '测试中...';
+  resultEl.style.color = '#64748b';
+  try {
+    var data = await fetchJSON('/api/test_llm', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({
+      provider: document.getElementById('s_llm_provider').value,
+      api_key: document.getElementById('s_openai_api_key').value,
+      base_url: document.getElementById('s_openai_base_url').value,
+      model: document.getElementById('s_llm_model').value,
+      local_url: document.getElementById('s_local_llm_base_url').value,
+      local_key: document.getElementById('s_local_llm_api_key').value,
+      local_model: document.getElementById('s_local_llm_model').value
+    })});
+    if (data.ok) {
+      resultEl.innerHTML = '<span style="color:#16a34a">✓ ' + data.message + '</span>';
+    } else {
+      resultEl.innerHTML = '<span style="color:#ef4444">✗ ' + data.message + '</span>';
+    }
+  } catch(e) {
+    resultEl.innerHTML = '<span style="color:#ef4444">✗ 测试失败: ' + e.message + '</span>';
   }
 }
 function openSettings() { document.getElementById('settingsOverlay').classList.add('show'); }
@@ -495,6 +525,32 @@ async function rebuildKB() {
 }
 function openKBSettings() { document.getElementById('kbSettingsOverlay').classList.add('show'); }
 function closeKBSettings() { document.getElementById('kbSettingsOverlay').classList.remove('show'); }
+async function testKBPath() {
+  var resultEl = document.getElementById('kb-test-result');
+  resultEl.textContent = '测试中...';
+  resultEl.style.color = '#64748b';
+  try {
+    var data = await fetchJSON('/api/kb/test?data_path=' + encodeURIComponent(document.getElementById('kb_data_path').value) + '&index_path=' + encodeURIComponent(document.getElementById('kb_index_path').value));
+    if (data.ok) {
+      resultEl.innerHTML = '<span style="color:#16a34a">✓ ' + data.message + '</span>';
+    } else {
+      resultEl.innerHTML = '<span style="color:#ef4444">✗ ' + data.message + '</span>';
+    }
+  } catch(e) {
+    resultEl.innerHTML = '<span style="color:#ef4444">✗ 测试失败: ' + e.message + '</span>';
+  }
+}
+async function saveKBSettings() {
+  var data_path = document.getElementById('kb_data_path').value;
+  var index_path = document.getElementById('kb_index_path').value;
+  try {
+    await fetchJSON('/api/kb/save_settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({data_path:data_path, index_path:index_path})});
+    alert('知识库设置已保存');
+    closeKBSettings();
+  } catch(e) {
+    alert('保存失败: ' + e.message);
+  }
+}
 document.getElementById('clear-all-chats').addEventListener('click',function(){doClearAll()});
 window.switchSession = doSwitchConv;
 window.deleteSession = doDeleteConv;

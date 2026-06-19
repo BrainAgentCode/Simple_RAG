@@ -257,6 +257,64 @@ async def kb_rebuild():
     threading.Thread(target=init_rag, daemon=True).start()
     return {"ok": True, "message": "知识库正在重建..."}
 
+@app.post("/api/test_llm")
+async def test_llm(req: Request):
+    data = await req.json()
+    import requests as req_lib
+    try:
+        if data.get("provider") == "local":
+            url = data.get("local_url", "").rstrip("/") + "/models"
+            api_key = data.get("local_key", "")
+        else:
+            url = data.get("base_url", "").rstrip("/") + "/models"
+            api_key = data.get("api_key", "")
+        if not url:
+            return {"ok": False, "message": "URL 不能为空"}
+        headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+        resp = req_lib.get(url, headers=headers, timeout=10)
+        resp.raise_for_status()
+        models = [m.get("id", "") for m in resp.json().get("data", []) if m.get("id")]
+        model = data.get("model") or data.get("local_model", "")
+        if model and model in models:
+            return {"ok": True, "message": f"连接成功，模型 {model} 可用（共 {len(models)} 个模型）"}
+        elif models:
+            return {"ok": True, "message": f"连接成功（共 {len(models)} 个模型）"}
+        else:
+            return {"ok": True, "message": "连接成功"}
+    except Exception as e:
+        return {"ok": False, "message": str(e)}
+
+@app.get("/api/kb/test")
+async def kb_test(data_path: str = "", index_path: str = ""):
+    dp = Path(data_path).resolve() if data_path else Path(DEFAULT_DATA_PATH).resolve()
+    ip = Path(index_path).resolve() if index_path else Path(DEFAULT_INDEX_PATH).resolve()
+    msgs = []
+    all_ok = True
+    if dp.exists():
+        count = sum(1 for f in dp.rglob("*") if f.is_file() and f.suffix.lower() in (".json", ".csv", ".txt", ".md", ".pdf"))
+        msgs.append(f"数据目录存在，包含 {count} 个文件")
+    else:
+        msgs.append(f"数据目录不存在: {dp}")
+        all_ok = False
+    if ip.exists():
+        has_idx = any(ip.glob("*.faiss"))
+        msgs.append("向量索引目录存在" + ("，已索引" if has_idx else "，未索引"))
+    else:
+        msgs.append(f"向量索引目录不存在: {ip}")
+        all_ok = False
+    return {"ok": all_ok, "message": "；".join(msgs)}
+
+@app.post("/api/kb/save_settings")
+async def kb_save_settings(req: Request):
+    data = await req.json()
+    settings = load_settings()
+    if data.get("data_path"):
+        settings["data_path"] = data["data_path"]
+    if data.get("index_path"):
+        settings["index_path"] = data["index_path"]
+    save_settings(settings)
+    return {"ok": True}
+
 @app.on_event("startup")
 async def startup():
     threading.Thread(target=init_rag, daemon=True).start()
