@@ -87,3 +87,5 @@ See `evaluation/README.md` for full details.
 - The reranker loads on first retrieval call, not at startup — don't be surprised by a delay on first query.
 - `requirements.txt` installs `faiss-cpu` by default. For GPU: `pip uninstall faiss-cpu -y && pip install faiss-gpu`.
 - After changing data, delete `vector_index/` and `data/nasa/parent_summaries_cache.json` to force rebuild.
+- No test suite, linting, or formatting config exists. Code style follows existing patterns in the repo.
+- No CI/CD workflows. No pre-commit hooks.
