@@ -530,11 +530,11 @@ async function testKBPath() {
   resultEl.textContent = '测试中...';
   resultEl.style.color = '#64748b';
   try {
-    var data = await fetchJSON('/api/kb/test?data_path=' + encodeURIComponent(document.getElementById('kb_data_path').value) + '&index_path=' + encodeURIComponent(document.getElementById('kb_index_path').value));
+    var data = await fetchJSON('/api/kb/test', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({data_path:document.getElementById('kb_data_path').value, index_path:document.getElementById('kb_index_path').value})});
     if (data.ok) {
-      resultEl.innerHTML = '<span style="color:#16a34a">✓ ' + data.message + '</span>';
+      resultEl.innerHTML = '<span style="color:#16a34a">✓</span> ' + data.message.replace(/；/g, '<br><span style="color:#16a34a">✓</span> ');
     } else {
-      resultEl.innerHTML = '<span style="color:#ef4444">✗ ' + data.message + '</span>';
+      resultEl.innerHTML = '<span style="color:#ef4444">✗</span> ' + (data.message || '路径无效').replace(/；/g, '<br><span style="color:#ef4444">✗</span> ');
     }
   } catch(e) {
     resultEl.innerHTML = '<span style="color:#ef4444">✗ 测试失败: ' + e.message + '</span>';

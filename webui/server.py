@@ -284,10 +284,13 @@ async def test_llm(req: Request):
     except Exception as e:
         return {"ok": False, "message": str(e)}
 
-@app.get("/api/kb/test")
-async def kb_test(data_path: str = "", index_path: str = ""):
-    dp = Path(data_path).resolve() if data_path else Path(DEFAULT_DATA_PATH).resolve()
-    ip = Path(index_path).resolve() if index_path else Path(DEFAULT_INDEX_PATH).resolve()
+@app.post("/api/kb/test")
+async def kb_test(req: Request):
+    data = await req.json()
+    data_path = data.get("data_path", DEFAULT_DATA_PATH)
+    index_path = data.get("index_path", DEFAULT_INDEX_PATH)
+    dp = Path(data_path).resolve()
+    ip = Path(index_path).resolve()
     msgs = []
     all_ok = True
     if dp.exists():
