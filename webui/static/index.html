@@ -354,9 +354,31 @@ async function submitSettings() {
   var fd = new FormData(document.getElementById('settingsForm'));
   var d = {};
   fd.forEach(function(v,k){d[k]=v});
-  await fetchJSON('/api/settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({settings:d})});
-  closeSettings();
-  await refreshState();
+  try {
+    await fetchJSON('/api/settings', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({settings:d})});
+    closeSettings();
+    state.ready = false;
+    state.system_initializing = true;
+    renderAll();
+    document.getElementById('chat-input').placeholder = '系统正在初始化，请稍候...';
+    pollSystemReady();
+  } catch(e) {
+    alert('保存失败: ' + e.message);
+  }
+}
+function pollSystemReady() {
+  if (!state.system_initializing) return;
+  setTimeout(async function() {
+    var data = await fetchJSON('/api/state');
+    if (data.system_ready) {
+      state.ready = true;
+      state.system_initializing = false;
+      renderAll();
+      document.getElementById('chat-input').placeholder = '向 NASA RAG 提问';
+    } else {
+      pollSystemReady();
+    }
+  }, 3000);
 }
 
 // UI helpers
