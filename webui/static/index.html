@@ -519,15 +519,6 @@ async function loadKBFiles() {
         '<div style="font-size:.75rem;color:#94a3b8">' + escH(f.path) + ' · ' + sizeStr + '</div></div></div>';
     });
     grid.innerHTML = html;
-    // Populate KB settings modal
-    var fileCountEl = document.getElementById('kb-file-count');
-    var indexStatusEl = document.getElementById('kb-index-status');
-    var dataPathEl = document.getElementById('kb_data_path');
-    var indexPathEl = document.getElementById('kb_index_path');
-    if (fileCountEl) fileCountEl.textContent = files.length + ' 个文件';
-    if (indexStatusEl) indexStatusEl.textContent = data.has_index ? '已索引' : '未索引';
-    if (dataPathEl) dataPathEl.value = data.data_path || '';
-    if (indexPathEl) indexPathEl.value = data.index_path || '';
   } catch(e) {
     grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:#ef4444">加载失败: ' + e.message + '</div>';
   }
@@ -545,7 +536,26 @@ async function rebuildKB() {
     document.getElementById('kb-status').style.color = '#991b1b';
   }
 }
-function openKBSettings() { document.getElementById('kbSettingsOverlay').classList.add('show'); }
+function openKBSettings() {
+  document.getElementById('kbSettingsOverlay').classList.add('show');
+  loadKBStatus();
+}
+async function loadKBStatus() {
+  try {
+    var data = await fetchJSON('/api/kb/files');
+    var files = data.files || [];
+    var fileCountEl = document.getElementById('kb-file-count');
+    var indexStatusEl = document.getElementById('kb-index-status');
+    var dataPathEl = document.getElementById('kb_data_path');
+    var indexPathEl = document.getElementById('kb_index_path');
+    if (fileCountEl) fileCountEl.textContent = files.length + ' 个文件';
+    if (indexStatusEl) indexStatusEl.textContent = data.has_index ? '已索引' : '未索引';
+    if (dataPathEl) dataPathEl.value = data.data_path || '';
+    if (indexPathEl) indexPathEl.value = data.index_path || '';
+  } catch(e) {
+    console.error('loadKBStatus failed:', e);
+  }
+}
 function closeKBSettings() { document.getElementById('kbSettingsOverlay').classList.remove('show'); }
 async function testKBPath() {
   var resultEl = document.getElementById('kb-test-result');

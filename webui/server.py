@@ -229,6 +229,7 @@ async def save_settings_api(req: SettingsRequest):
     with state.lock:
         state.system_ready = False
         state.rag_system = None
+    threading.Thread(target=init_rag, daemon=True).start()
     return {"ok": True}
 
 @app.get("/api/kb/files")
