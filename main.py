@@ -104,18 +104,26 @@ class AerospaceRAGSystem:
 
         if vectorstore is not None:
             print("成功加载已保存的向量索引")
-            print("加载文档...")
-            self.data_module.load_documents()
+            chunks = list(vectorstore.docstore._dict.values())
+            print(f"从向量索引恢复 {len(chunks)} 个文档块")
+            self.data_module.chunks = chunks
+            self.data_module.documents = chunks
+            self.data_module.parent_documents = chunks
             self._build_parent_documents()
-            print("加载预分块...")
-            chunks = self.data_module.chunk_documents()
         else:
-            print("未找到已保存的索引，开始构建新索引...")
-            print("加载文档...")
-            self.data_module.load_documents()
-            self._build_parent_documents()
-            print("加载预分块...")
-            chunks = self.data_module.chunk_documents()
+            print("未找到已保存的索引（或维度不匹配），开始构建新索引...")
+            chunks = self._load_chunks_from_pkl()
+            if not chunks:
+                print("加载文档...")
+                self.data_module.load_documents()
+                self._build_parent_documents()
+                print("加载预分块...")
+                chunks = self.data_module.chunk_documents()
+            else:
+                print(f"从旧索引恢复 {len(chunks)} 个文档块")
+                self.data_module.chunks = chunks
+                self.data_module.documents = chunks
+                self.data_module.parent_documents = chunks
             print("构建向量索引...")
             vectorstore = self.index_module.build_vector_index(chunks)
             print("保存向量索引...")
@@ -140,12 +148,29 @@ class AerospaceRAGSystem:
         )
 
         stats = self.data_module.get_statistics()
-        print("\n知识库统计:")
-        print(f"   父文档总数: {stats['total_documents']}")
-        print(f"   可检索文本块数: {stats['total_chunks']}")
-        print(f"   文档类型: {stats.get('categories', {})}")
-        print(f"   来源分布: {stats.get('source_types', {})}")
+        if stats:
+            print("\n知识库统计:")
+            print(f"   父文档总数: {stats.get('total_documents', 'N/A')}")
+            print(f"   可检索文本块数: {stats.get('total_chunks', 'N/A')}")
+            print(f"   文档类型: {stats.get('categories', {})}")
+            print(f"   来源分布: {stats.get('source_types', {})}")
         print("知识库构建完成")
+
+    def _load_chunks_from_pkl(self):
+        import pickle
+        index_path = Path(self.config.index_save_path)
+        pkl_path = index_path / "index.pkl"
+        if not pkl_path.exists():
+            return []
+        try:
+            print(f"尝试从 {pkl_path} 恢复文档块...")
+            with open(pkl_path, "rb") as f:
+                data = pickle.load(f)
+            docstore = data[0]
+            return list(docstore._dict.values())
+        except Exception as e:
+            print(f"从 pkl 恢复失败: {e}")
+            return []
 
     def _build_parent_documents(self):
         print(

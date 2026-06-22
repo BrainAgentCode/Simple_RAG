@@ -1,0 +1,20 @@
+{
+  "selected_provider": "OpenAI",
+  "provider_config": {
+    "OpenAI": {
+      "api_key": "sk-TZw8OhQEIVdBYRzFgu5YEl4g7UWauDOi2r4vW2TUr9zxdFu0",
+      "base_url": "https://newapi.wnluo.com/v1"
+    },
+    "Anthropic": {
+      "api_key": "",
+      "base_url": "https://api.anthropic.com"
+    },
+    "本地模型": {
+      "base_url": "http://localhost:8000/v1",
+      "api_key": "not-needed"
+    }
+  },
+  "selected_model_name": "claude-haiku-4-5-20251001",
+  "custom_model_name": "",
+  "use_custom_model": false
+}

@@ -10,11 +10,15 @@ RAG (Retrieval-Augmented Generation) system for aerospace knowledge Q&A over NAS
 # Install deps
 pip install -r requirements.txt
 
+# For FastAPI web UI, also install:
+pip install fastapi uvicorn
+
 # Download + chunk NASA data (must run before anything works)
 python thesis_pipeline/download_nasa_data.py
 
-# Start web UI (Streamlit on port 8501)
-bash run_webui.sh
+# Start web UI — two options (both on port 8501):
+bash run_webui.sh              # Streamlit (webui/app.py)
+python webui/start_fastapi.py  # FastAPI (webui/server.py)
 
 # Start CLI interactive mode
 python main.py

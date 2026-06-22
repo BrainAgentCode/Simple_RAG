@@ -254,6 +254,14 @@ class IndexConstructionModule:
                 self.embeddings,
                 allow_dangerous_deserialization=True,
             )
+            index_dim = self.vectorstore.index.d
+            embed_dim = self.embeddings.embed_query("test").__len__()
+            if index_dim != embed_dim:
+                logger.warning(
+                    f"向量索引维度 ({index_dim}) 与当前 embedding 模型维度 ({embed_dim}) 不匹配，将重建索引"
+                )
+                self.vectorstore = None
+                return None
             self._maybe_move_index_to_gpu()
             logger.info(f"向量索引已从 {self.index_save_path} 加载")
             return self.vectorstore
